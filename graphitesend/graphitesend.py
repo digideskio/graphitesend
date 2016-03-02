@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 
 try:
-    from gevent import monkey
-    monkey.patch_socket()
     import gevent
 except ImportError:
     gevent = False
@@ -50,7 +48,7 @@ class GraphiteClient(object):
     :param dryrun: Toggle if it will really send metrics or just return them
     :type dryrun: True or False
     :param timeout_in_seconds: Number of seconds before a connection is timed out.
-    :param asynchronous: Send messages asynchronouly via gevent
+    :param asynchronous: Send messages asynchronouly via gevent (You have to monkey patch sockets for it to work)
     :param clean_metric_name: Does GraphiteClient needs to clean metric's name
     :type clean_metric_name: True or False
     It will then send any metrics that you give it via
